@@ -1,0 +1,123 @@
+
+   * { box-sizing: border-box; margin:0; padding:0; }
+
+   body {
+     font-family: "微軟正黑體", "Segoe UI", Arial, sans-serif;
+     background: linear-gradient(135deg, #E6F9F8 0%, #ffffff 50%, #f7ffff 100%);
+     color: #05373a;
+     padding: 24px;
+     line-height: 1.8;
+   }
+   
+   /* 容器（第 6 個參數：max-width 改成 900px） */
+   .container {
+     max-width: 900px;            /* 改成 900px */
+     margin: 0 auto;
+     background-color: #ffffff;
+     padding: 36px;
+     border-radius: 12px;
+     box-shadow: 0 12px 30px rgba(6, 50, 50, 0.08);
+   }
+   
+   /* 主標題（第 2 & 3：顏色與字體大小） */
+   h1 {
+     color: #0ABAB5;               /* Tiffany 主色 */
+     text-align: center;
+     font-size: 3em;              /* 3em（作業要求） */
+     margin-bottom: 22px;
+     padding-bottom: 12px;
+     border-bottom: 4px solid rgba(10,186,181,0.15);
+   }
+   
+   /* 副標題（第 4 & 5：副標題顏色與大小） */
+   h2 {
+     color: #0A7F7A;              /* 深一些的 Tiffany 色 */
+     font-size: 2em;              /* 改成 2em */
+     margin-bottom: 12px;
+     padding-left: 10px;
+     border-left: 6px solid #0ABAB5;
+   }
+   
+   /* 區塊樣式與 hover（第 8：hover translateY） */
+   .section {
+     margin: 22px 0;
+     padding: 18px;
+     background-color: #fbffff;
+     border-radius: 10px;
+     transition: transform 0.25s ease, box-shadow 0.25s ease;
+   }
+   .section:hover {
+     transform: translateY(-5px);   /* 改成 -5px */
+     box-shadow: 0 8px 20px rgba(10,186,181,0.06);
+   }
+   
+   /* 表格樣式（第 7：th 背景） */
+   table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 8px;
+   }
+   th {
+     background-color: #0ABAB5;   /* 表格標題背景用 Tiffany 主色 */
+     color: #fff;
+     padding: 12px;
+     text-align: left;
+     font-size: 1.05em;
+   }
+   td {
+     padding: 12px;
+     border-bottom: 1px solid #eef7f6;
+     color: #054343;
+   }
+   
+   /* 列表（第 9：列表示項符號符號改成 ✦） */
+   ul {
+     padding-left: 20px;
+   }
+   li {
+     margin: 10px 0;
+     padding-left: 22px;
+     position: relative;
+     color: #054343;
+   }
+   li::before {
+     content: "✦";               
+     position: absolute;
+     left: 0;
+     color: #0ABAB5;             /* 符號用主色 */
+     font-weight: 700;
+   }
+   
+   /* 超連結（第 10：顏色） */
+   a {
+     color: #0A7F7A;            /* 超連結顏色改成深 Tiffany */
+     text-decoration: none;
+     font-weight: 600;
+   }
+   a:hover {
+     color: #063c3a;
+     text-decoration: underline;
+   }
+   
+   /* 個人照片樣式 */
+   .profile-img {
+     width: 260px;
+     height: 260px;
+     border-radius: 50%;
+     object-fit: cover;
+     display: block;
+     margin: 16px auto 0;
+     border: 6px solid rgba(10,186,181,0.18);
+     box-shadow: 0 8px 18px rgba(6,50,50,0.1);
+     transition: transform 0.25s ease;
+   }
+   .profile-img:hover { transform: scale(1.04); }
+   
+   /* 反白/小螢幕調整（RWD） */
+   @media (max-width: 700px) {
+     .container { padding: 18px; margin: 12px; }
+     h1 { font-size: 2em; }
+     h2 { font-size: 1.4em; }
+     .profile-img { width: 150px; height: 150px; }
+   }
+   
