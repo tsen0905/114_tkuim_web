@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>關於我 / 作品集</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap icons (社群圖示) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* Tiffany 主題色 */
+    :root{
+      --tiffany: #0ab7b3;
+      --tiffany-dark: #066c68;
+      --tiffany-light: #e7f7f6;
+    }
+
+    /* 全站字型、行高 */
+    body{
+      font-family: "Noto Sans TC", "Segoe UI", Arial, sans-serif;
+      line-height:1.6;
+    }
+
+    /* 每個 section 間距 */
+    section{ padding-top:4rem; padding-bottom:4rem; }
+
+    /* hero  */
+    .hero {
+      background: linear-gradient(180deg, rgba(10,183,179,0.08), rgba(10,183,179,0.02));
+    }
+
+    /* navbar brand 顏色 */
+    .navbar-brand {
+      font-weight:700;
+      color: var(--tiffany) !important;
+    }
+
+    /* 主按鈕 */
+    .btn-tiffany {
+      background: var(--tiffany);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .btn-tiffany:hover{ background: var(--tiffany-dark); color: #fff; }
+
+    /* card hover */
+    .card-hover:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(6,108,104,0.12);
+    }
+    .card-hover { transition: all .25s ease; }
+
+    /* 作品圖片高度限制 */
+    .portfolio-img { height:200px; object-fit:cover; }
+
+    /* footer */
+    footer a { color: #fff; }
+    footer .social a { margin:0 .4rem; font-size:1.2rem; }
+
+    /* 小螢幕調整 hero 字級 */
+    @media (max-width:576px){
+      .display-large { font-size:2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background:var(--tiffany-dark);">
+    <div class="container">
+      <a class="navbar-brand" href="#">劉姵岑</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">首頁</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">關於</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">作品</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">聯絡</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="display-4 fw-bold display-large">嗨，我是劉姵岑</h1>
+          <p class="lead text-muted mb-4">資訊管理系學生｜平時喜歡研究各種東西還有遊戲模組</p>
+          <a class="btn btn-tiffany btn-lg me-2" href="#portfolio">查看作品</a>
+          <a class="btn btn-outline-dark btn-lg" href="#contact">聯絡我</a>
+        </div>
+        <div class="col-lg-5 text-center d-none d-lg-block">
+          <img src="cattt.jpeg" alt="profile" class="img-fluid rounded-circle shadow" style="border:6px solid #fff;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">關於我</h2>
+      <div class="row align-items-center">
+        <div class="col-md-5 text-center mb-4 mb-md-0">
+          <img src="owo.jpeg" class="img-fluid rounded-circle" alt="我的照片">
+        </div>
+        <div class="col-md-7">
+          <h3 class="fw-bold" style="color:var(--tiffany-dark)">劉姵岑｜資訊管理系</h3>
+          <p class="text-muted fs-5">我對網站開發與網路安全充滿興趣，喜歡學習新的技術並參與實作專案。近期學習方向為前端互動、Bootstrap + RWD，以及基本滲透測試工具（如 Burp 與 DVWA）。</p>
+
+          <ul class="list-unstyled">
+            <li class="mb-2"><span class="badge bg-primary me-2">經歷</span>參加校內專題、外部實作課程</li>
+            <li class="mb-2"><span class="badge bg-success me-2">專長</span>HTML / CSS / Bootstrap / Git</li>
+            <li class="mb-2"><span class="badge bg-info text-dark me-2">目標</span>成為全端或資安領域的工程師</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="text-center mb-5">我的技能</h2>
+      <div class="row g-4">
+        <!-- skill card 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 card-hover">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <div class="me-3 display-6 text-primary"><i class="bi bi-code-slash"></i></div>
+                <h5 class="card-title mb-0">前端開發</h5>
+              </div>
+              <p class="card-text text-muted">熟悉 HTML、CSS、Bootstrap，能快速切版與響應式設計。</p>
+              <div class="mb-2">
+                <span class="badge bg-success">熟練</span>
+                <span class="badge bg-light text-dark">Bootstrap</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width:85%">85%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- skill card 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 card-hover">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <div class="me-3 display-6 text-primary"><i class="bi bi-server"></i></div>
+                <h5 class="card-title mb-0">後端基礎</h5>
+              </div>
+              <p class="card-text text-muted">了解基本後端概念、簡單 PHP 與資料庫連接（學習中）。</p>
+              <div class="mb-2"><span class="badge bg-warning text-dark">進行中</span></div>
+              <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" style="width:55%">55%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- skill card 3 -->
+        <div class="col-md-4">
+          <div class="card h-100 card-hover">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <div class="me-3 display-6 text-primary"><i class="bi bi-shield-lock"></i></div>
+                <h5 class="card-title mb-0">資安基礎</h5>
+              </div>
+              <p class="card-text text-muted">熟悉 DVWA、Burp 的基本使用，了解常見 Web 漏洞類型。</p>
+              <div class="mb-2"><span class="badge bg-info text-dark">基礎</span></div>
+              <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" style="width:60%">60%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO (6 items) -->
+<section id="portfolio" class="bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">作品集</h2>
+      <div class="row g-4">
+    
+  
+        <!-- item 4 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 card-hover">
+            <!-- 如果你有本地圖檔，改成: src="images.png" -->
+            <img src="zzzz.jpeg" class="card-img-top portfolio-img" alt="作品4">
+            <div class="card-body">
+              <h5 class="card-title">作品一：表單範例</h5>
+              <p class="card-text text-muted">表單驗證與後端串接模擬。</p>
+              <a href="#" class="btn btn-sm btn-outline-dark">查看詳情</a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- item 5 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 card-hover">
+            <img src="images.png" class="card-img-top portfolio-img" alt="作品5">
+            <div class="card-body">
+              <h5 class="card-title">作品二：圖庫</h5>
+              <p class="card-text text-muted">響應式圖庫與 Lightbox（示意）。</p>
+              <a href="#" class="btn btn-sm btn-tiffany">查看詳情</a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- item 6 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 card-hover">
+            <img src="筆記網頁照片.jpg" class="card-img-top portfolio-img" alt="作品6">
+            <div class="card-body">
+              <h5 class="card-title">作品三：實作筆記</h5>
+              <p class="card-text text-muted">課堂筆記與練習專案整理。</p>
+              <a href="#" class="btn btn-sm btn-outline-dark">查看詳情</a>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="text-center mb-5">聯絡我</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">姓名</label>
+              <input id="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input id="email" type="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">主旨</label>
+              <input id="subject" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">訊息</label>
+              <textarea id="message" rows="5" class="form-control" required></textarea>
+            </div>
+            <div class="d-grid">
+              <button class="btn btn-tiffany btn-lg" type="submit">送出訊息</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- FOOTER: 三個文字超連結（無圖示） -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <p class="mb-2">
+        <a href="https://github.com/tsen0905" target="_blank" rel="noopener" class="text-white text-decoration-none me-3">GitHub</a>
+        <a href="https://hackmd.io/@ZOnOzOsESzGM4_m1EK_80g" target="_blank" rel="noopener" class="text-white text-decoration-none me-3">HackMD</a>
+        <a href="https://www.blogger.com/blog/posts/432652173986504068" target="_blank" rel="noopener" class="text-white text-decoration-none">Blogger</a>
+      </p>
+      <p class="mb-0">&copy; 2025 劉姵岑 • All rights reserved.</p>
+    </div>
+  </footer>
+  
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
