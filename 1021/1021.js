@@ -19,7 +19,7 @@ function parseTempInput(s) {
   
     var btnTemp = document.getElementById('btnTemp');
     var tempResult = document.getElementById('tempResult');
-    var btnGuess = document.getElementById('btnGuess');
+    var btnGuess = document.getElementById('btnGuess');s
     var guessResult = document.getElementById('guessResult');
   
     if (!btnTemp) console.error('btnTemp not found in DOM');
