@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>溫度轉換 & 猜數字</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    pre { white-space: pre-wrap; font-family: monospace; }
+    .box { margin-top: 16px; }
+  </style>
+</head>
+<body class="p-4">
+  <div class="container">
+    <h2>...</h2>
+
+    <div class="box">
+      <h4>1) 溫度轉換器（攝氏 ↔ 華氏）</h4>
+      <p>按按鈕，用 prompt 輸入溫度與單位 (C 或 F)。</p>
+      <button id="btnTemp" class="btn btn-primary">執行溫度轉換</button>
+      <pre id="tempResult" class="bg-light p-3 border"></pre>
+    </div>
+
+    <div class="box">
+      <h4>2) 猜數字遊戲（1–100）</h4>
+      <p>電腦隨機產生 1–100，用 prompt 猜，每次會提示「再大一點 / 再小一點」。</p>
+      <button id="btnGuess" class="btn btn-success">開始猜數字遊戲</button>
+      <pre id="guessResult" class="bg-light p-3 border"></pre>
+    </div>
+  </div>
+
+  <!-- 外部 JS -->
+  <script src="1021.js"></script>
+</body>
+</html>
+
