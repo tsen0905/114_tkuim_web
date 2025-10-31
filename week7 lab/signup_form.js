@@ -1,4 +1,3 @@
-// signup_form.js
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('signup-form');
     const nameInput = document.getElementById('name');
@@ -24,8 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const strengthLabel = document.getElementById('strength-label');
   
     const STORAGE_KEY = 'signup:draft';
-  
-    // --- helpers ---
     function setError(el, msg) {
       el.setCustomValidity(msg);
       const id = el.id + '-error';
@@ -39,8 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function getSelectedInterests() {
       return Array.from(interestsWrap.querySelectorAll('input[name="interest"]:checked')).map(i => i.value);
     }
-  
-    // --- validations ---
     function validateName() {
       const v = nameInput.value.trim();
       if (!v) {
@@ -57,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setError(emailInput, '請輸入 Email');
         return false;
       }
-      // 基本格式檢查（如需限定 domain 可改此處）
       const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!re.test(v)) {
         setError(emailInput, 'Email 格式不正確');
@@ -135,8 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
       termsErr.textContent = '';
       return true;
     }
-  
-    // --- password strength ---
     function updateStrength(val) {
       let score = 0;
       if (!val) {
@@ -164,8 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
         strengthLabel.textContent = '強';
       }
     }
-  
-    // --- localStorage (debounce) ---
     let saveTimer = null;
     function saveDraft() {
       if (saveTimer) clearTimeout(saveTimer);
@@ -182,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
         } catch (e) {
-          // noop
         }
       }, 300);
     }
@@ -206,15 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
         termsInput.checked = !!d.terms;
         updateStrength(passwordInput.value);
       } catch (e) {
-        // noop
       }
     }
   
     function clearDraft() {
       localStorage.removeItem(STORAGE_KEY);
     }
-  
-    // --- interest label styling via delegation ---
     function toggleInterestLabel(inputEl) {
       const label = inputEl.closest('.interest-item');
       if (!label) return;
@@ -225,10 +211,8 @@ document.addEventListener('DOMContentLoaded', () => {
         label.classList.remove('active', 'btn-tiffany-outline');
         label.classList.add('btn-outline-secondary');
       }
-    }
-  
+    }  
     interestsWrap.addEventListener('click', (e) => {
-      // 點擊 label 時切換隱藏的 checkbox
       const targetLabel = e.target.closest('.interest-item');
       if (!targetLabel) return;
       const cb = targetLabel.querySelector('input[name="interest"]');
@@ -238,11 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
       validateInterests();
       saveDraft();
     });
-  
-    // --- attach blur / input listeners ---
     [nameInput, emailInput, phoneInput, passwordInput, confirmInput].forEach(input => {
       input.addEventListener('blur', () => {
-        // validate on blur
         switch (input.id) {
           case 'name': validateName(); break;
           case 'email': validateEmail(); break;
@@ -252,7 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       input.addEventListener('input', () => {
-        // live update; only show error if there was an error
         switch (input.id) {
           case 'name': if (nameInput.validationMessage) validateName(); break;
           case 'email': if (emailInput.validationMessage) validateEmail(); break;
@@ -263,14 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
         saveDraft();
       });
     });
-  
-    // terms change
     termsInput.addEventListener('change', () => {
       validateTerms();
       saveDraft();
     });
-  
-    // interest checkboxes direct change (in case user manipulates input)
     interestsWrap.querySelectorAll('input[name="interest"]').forEach(cb => {
       cb.addEventListener('change', () => {
         toggleInterestLabel(cb);
@@ -278,12 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
         saveDraft();
       });
     });
-  
-    // submit handling
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-  
-      // validate all
       const validators = [
         {fn: validateName, el: nameInput},
         {fn: validateEmail, el: emailInput},
@@ -292,14 +264,12 @@ document.addEventListener('DOMContentLoaded', () => {
         {fn: validateConfirm, el: confirmInput}
       ];
   
-      // run validators and find first invalid
       let firstInvalidEl = null;
       for (const v of validators) {
         const ok = v.fn();
         if (!ok && !firstInvalidEl) firstInvalidEl = v.el;
       }
       if (!validateInterests() && !firstInvalidEl) {
-        // focus first interest checkbox
         const first = interestsWrap.querySelector('input[name="interest"]');
         if (first) firstInvalidEl = first;
       }
@@ -311,17 +281,11 @@ document.addEventListener('DOMContentLoaded', () => {
         firstInvalidEl.focus();
         return;
       }
-  
-      // pass -> disable button, show loading
       submitBtn.disabled = true;
       const origLabel = submitBtn.textContent;
       submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 送出中...`;
-  
-      // simulate network
-      await new Promise(resolve => setTimeout(resolve, 1000));
-  
+      await new Promise(resolve => setTimeout(resolve, 1000)); 
       alert('註冊成功！感謝您的註冊。');
-      // reset everything
       form.reset();
       updateStrength('');
       interestsWrap.querySelectorAll('input[name="interest"]').forEach(i => toggleInterestLabel(i));
@@ -330,17 +294,14 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.textContent = origLabel;
     });
   
-    // reset button
     resetBtn.addEventListener('click', () => {
       form.reset();
       updateStrength('');
       interestsWrap.querySelectorAll('input[name="interest"]').forEach(i => toggleInterestLabel(i));
-      // clear error messages
       [nameErr, emailErr, phoneErr, passwordErr, confirmErr, interestsErr, termsErr].forEach(p => p.textContent = '');
       clearDraft();
     });
   
-    // initial restore
     restoreDraft();
   });
   

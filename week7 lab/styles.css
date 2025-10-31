@@ -1,4 +1,3 @@
-/* Tiffany 綠色系主題 / 基本客製化 */
 :root{
     --tiffany: #88d1c5;
     --tiffany-dark: #4bb39e;
@@ -9,7 +8,6 @@
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
   
-  /* 按鈕樣式 */
   .btn-tiffany {
     background: linear-gradient(180deg, var(--tiffany) 0%, var(--tiffany-dark) 100%);
     color: var(--tiffany-contrast);
@@ -20,32 +18,23 @@
     color: white;
     box-shadow: 0 4px 12px rgba(75,179,158,0.15);
   }
-  
-  /* 興趣被選取時的 label 樣式 */
   .interest-item.active {
     border-color: var(--tiffany-dark) !important;
     background: linear-gradient(90deg, rgba(136,209,197,0.12), rgba(136,209,197,0.06));
     box-shadow: inset 0 0 0 2px rgba(75,179,158,0.06);
   }
   
-  /* 另一個可用於選取 label 的色版 */
   .btn-tiffany-outline {
     background: none;
     color: var(--tiffany-dark);
     border-color: var(--tiffany-dark);
   }
-  
-  /* password strength bar 色彩會被 JS 加上 bg-* */
   .tiffany-progress {
     background: rgba(0,0,0,0.05);
   }
-  
-  /* 小螢幕的 form spacing */
   @media (max-width: 576px) {
     main.container { padding-left: 10px; padding-right: 10px; }
   }
-  
-  /* invalid 樣式（讓畫面更明顯） */
   input.is-invalid, textarea.is-invalid, select.is-invalid {
     border-color: #dc3545 !important;
     box-shadow: none !important;
