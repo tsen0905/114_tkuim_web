@@ -1,0 +1,14 @@
+### 測試 POST
+POST http://localhost:3000/api/signup
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@test.com",
+  "phone": "0912345678",
+  "password": "abc12345",
+  "confirmPassword": "abc12345"
+}
+
+### 測試 GET
+GET http://localhost:3000/api/signup
