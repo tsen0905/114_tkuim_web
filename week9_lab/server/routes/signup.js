@@ -1,10 +1,8 @@
 import express from "express";
 const router = express.Router();
 
-// 暫存資料（不用加分項目 → 存記憶體即可）
 const signupList = [];
 
-// 驗證類別
 function validateSignup(data) {
   if (!data.name) return "姓名必填";
   if (!data.email || !data.email.includes("@")) return "Email 格式錯誤";
@@ -14,10 +12,9 @@ function validateSignup(data) {
   if (data.password !== data.confirmPassword)
     return "密碼與確認密碼不一致";
 
-  return null; // 驗證通過
+  return null; 
 }
 
-// POST /api/signup
 router.post("/", (req, res) => {
   console.log("後端收到：", req.body);
 
@@ -41,7 +38,6 @@ router.post("/", (req, res) => {
   });
 });
 
-// GET /api/signup
 router.get("/", (req, res) => {
   res.json({
     total: signupList.length,
