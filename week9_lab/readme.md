@@ -14,23 +14,13 @@ Server running on http://localhost:3000
 
 【二、如何啟動前端（Client）】
 
-方法一：Live Server（推薦使用）
+-> Live Server
 
 在 VS Code 打開 client/signup_form.html
 
 右鍵 → Open with Live Server
 
 預設網址：http://127.0.0.1:5500/
-
-方法二：若使用 Vite
-
-cd client
-
-npm install
-
-npm run dev
-
-啟動後會顯示網址，例如：http://localhost:5173/
 
 【三、API 端點文件與測試方式】
 
