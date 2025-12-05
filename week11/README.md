@@ -1,94 +1,155 @@
-＊crud說明
-CRUD 指的是建立、讀取、更新、刪除四種資料操作，是後端系統最基本的資料管理流程。本報名系統透過對應的 POST、GET、PATCH、DELETE API 完成上述四種操作。
+## CRUD 說明
+CRUD 指的是建立（Create）、讀取（Read）、更新（Update）、刪除（Delete）四種資料操作，是後端系統最基本的資料管理流程。本報名系統透過 POST、GET、PATCH、DELETE API 完成上述功能。
 
-＊啟動指令
-1. 啟動 MongoDB
+---
+
+## 啟動指令
+
+### 一、啟動 MongoDB（Docker Compose）
 進入 docker 資料夾：
+
 cd docker
 docker compose up -d
-確認 MongoDB 是否成功啟動：docker ps
-看到 mongo-week11表示成功。
 
-2. 啟動後端 API
+確認 MongoDB 是否成功啟動：
+docker ps
+
+看到 `mongo-week11` 表示成功。
+
+---
+
+### 二、啟動後端 API（Node.js）
 進入 server 資料夾：
+
 cd server
 npm install
 npm run dev
-成功會看到：
+
+
+成功會顯示：
 MongoDB connected
 Server running on http://localhost:3000
 
-3. .env 設定（必要）
-請將 .env 放在 server/ 資料夾底下：
+---
+
+## .env 設定（必要）
+將 `.env` 放在 `server/` 資料夾：
+
 MONGO_URI=mongodb://root:rootpassword@localhost:27017/week11db?authSource=admin
 PORT=3000
-.env.example 可提供空白欄位：
+
+`.env.example` 範例：
+
 MONGO_URI=
 PORT=
 
-＊API 測試方式（VSCode REST Client）
-使用 VSCode 套件 REST Client
-以下為測試指令在 tests/api.http 中的示範：
+---
 
-1. 建立報名資料（POST）
+## API 測試方式（VSCode REST Client）
+本專案使用 VSCode 的 **REST Client** 進行 API 測試。  
+指令示範位於 `tests/api.http`。
+
+### 1. 建立報名資料（POST）
+
 POST http://localhost:3000/api/signup
 Content-Type: application/json
 
 {
-  "name": "Test User",
-  "email": "test@example.com",
-  "phone": "0987654321",
-  "status": "pending"
+"name": "Test User",
+"email": "test@example.com",
+"phone": "0987654321",
+"status": "pending"
 }
 
 成功回傳：
+
 {
-  "_id": "6932dfa9a5a018edf2363c34"
+"_id": "6932dfa9a5a018edf2363c34"
 }
 
-2. 查詢報名資料（GET，含分頁）
+---
+
+### 2. 查詢報名資料（GET，含分頁）
+
 GET http://localhost:3000/api/signup?page=1&limit=5
 
-3. 更新資料（PATCH）
+---
+
+### 3. 更新資料（PATCH）
+
 PATCH http://localhost:3000/api/signup/你的_id
 Content-Type: application/json
 
 {
-  "phone": "0912345678",
-  "status": "confirmed"
+"phone": "0912345678",
+"status": "confirmed"
 }
 
-4. 刪除資料（DELETE）
+---
+
+### 4. 刪除資料（DELETE）
+
 DELETE http://localhost:3000/api/signup/你的_id
-Mongo Shell 指令
+
+
+---
+
+## Mongo Shell 指令
+
 連線至 MongoDB：
+
 docker exec -it mongo-week11 mongosh -u root -p rootpassword
+
 切換資料庫：
+
 use week11db
 
-查詢集合內容：
+
+查詢集合：
+
 db.participants.find().pretty()
 
 清空集合：
+
 db.participants.deleteMany({})
 
-＊常見問題 FAQ
-1. API 無法連線 MongoDB
-確認Docker是否啟動：docker ps
-如未啟動：docker compose up -d
 
-2. .env 沒有作用
-請確認：.env 放在 server 資料夾
-已在 app.js 最上方加入 dotenv.config()
+---
 
-3. 出現 duplicate key error
-表示email已註冊過，此行為符合唯一索引設計。
-換新的 email 測試。
-4. PATCH 或 DELETE 出現 "Cast to ObjectId failed"
-可能使用錯誤的 id 先用GET查詢正確id再測試。
+## 常見問題 FAQ
 
-5. Mongo URI 錯誤
-使用以下格式：mongodb://root:rootpassword@localhost:27017/week11db?authSource=admin
+### 1. API 無法連線 MongoDB  
+確認 Docker 是否啟動：
+
+docker ps
+
+若未啟動：
+
+docker compose up -d
+
+---
+
+### 2. .env 無作用  
+請確認：
+- `.env` 位於 `server/`
+- `app.js` 頂端有 `dotenv.config()`
+
+---
+
+### 3. duplicate key error  
+原因：email 重複，不符合唯一索引。  
+請使用新的 email 測試。
+
+---
+
+### 4. PATCH 或 DELETE 顯示 "Cast to ObjectId failed"  
+通常是 id 格式錯誤。  
+請先用 GET 查出正確 `_id`。
+
+---
+
+### 5. Mongo URI 錯誤  
+請使用：
 
 *MongoDB Compass 截圖
 ![](image.png) 
