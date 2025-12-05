@@ -1,0 +1,4 @@
+cd ../server
+db.participants.find().pretty()
+show collections
+use week11db

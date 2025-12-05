@@ -1,0 +1,37 @@
+### 建立報名
+POST http://localhost:3000/api/signup
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "phone": "0987654321",
+  "status": "pending"
+}
+
+### 再次用同 email 報名（預期要 400）
+POST http://localhost:3000/api/signup
+Content-Type: application/json
+
+{
+  "name": "Duplicate User",
+  "email": "test@example.com",
+  "phone": "0911111111",
+  "status": "pending"
+}
+
+### 查詢報名（含分頁測試）
+GET http://localhost:3000/api/signup?page=1&limit=5
+
+### 更新 phone / status
+PATCH http://localhost:3000/api/signup/6932dfa9a5a018edf2363c34
+Content-Type: application/json
+
+{
+  "phone": "0912345678",
+  "status": "confirmed"
+}
+
+### 刪除報名
+DELETE http://localhost:3000/api/signup/6932dfa9a5a018edf2363c34
+

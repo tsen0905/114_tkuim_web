@@ -1,0 +1,23 @@
+{
+    "name": "week11-signup-api",
+    "version": "1.0.0",
+    "description": "Week11 signup API server",
+    "main": "app.js",
+    "type": "commonjs",
+    "scripts": {
+      
+        "dev": "nodemon app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.6.1",
+        "express": "^4.22.1",
+        "mongoose": "^8.20.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.0"
+    },
+    "keywords": []
+}
