@@ -1,3 +1,6 @@
+＊crud說明
+CRUD 指的是建立、讀取、更新、刪除四種資料操作，是後端系統最基本的資料管理流程。本報名系統透過對應的 POST、GET、PATCH、DELETE API 完成上述四種操作。
+
 ＊啟動指令
 1. 啟動 MongoDB
 進入 docker 資料夾：
