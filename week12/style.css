@@ -1,0 +1,48 @@
+body {
+    font-family: sans-serif;
+    padding: 40px;
+  }
+  
+  .float-box {
+    width: 150px;
+    height: 150px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .float-box:hover {
+    animation-play-state: paused;
+    transform: scale(1.05);
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .orbit {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    animation: spin 6s linear infinite;
+  }
+  
+  .planet {
+    width: 30px;
+    height: 30px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
