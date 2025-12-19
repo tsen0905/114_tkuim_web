@@ -1,0 +1,74 @@
+### 未登入 GET（應該被拒）
+GET http://localhost:3000/api/signup
+
+### 建立 admin
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123456",
+  "role": "admin"
+}
+
+###  建立 student
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "username": "student",
+  "password": "123456",
+  "role": "student"
+}
+
+### admin 登入
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123456"
+}
+
+###  student 登入
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "student",
+  "password": "123456"
+}
+
+### admin 新增資料
+POST http://localhost:3000/api/signup
+Content-Type: application/json
+Authorization: Bearer {{”eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDU0MjZhYWM5MTI5ZDk1ZDhjMzFhMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NjE0NzIzNn0.ZLi_QVWUqewPtxJEcqZVj0OTw_25dWu-t98jmTrrR58“}}
+
+{
+  "name": "admin 的資料"
+}
+
+### student 新增資料
+POST http://localhost:3000/api/signup
+Content-Type: application/json
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDU0NDhiYWM5MTI5ZDk1ZDhjMzFhOSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzY2MTQ3Mjk5fQ.IeSbf8ez6Et80a8Em7IUaDfAYD-gS2QSSv-1CsPLGSM"}}
+
+{
+  "name": "student 的資料"
+}
+
+###  admin GET（應看到全部）
+GET http://localhost:3000/api/signup
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDU0NDhiYWM5MTI5ZDk1ZDhjMzFhOSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzY2MTQ3Mjk5fQ.IeSbf8ez6Et80a8Em7IUaDfAYD-gS2QSSv-1CsPLGSM"}}
+
+### student GET（只能看到自己的）
+GET http://localhost:3000/api/signup
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDU0NDhiYWM5MTI5ZDk1ZDhjMzFhOSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzY2MTQ3Mjk5fQ.IeSbf8ez6Et80a8Em7IUaDfAYD-gS2QSSv-1CsPLGSM"}}
+
+### student 嘗試刪 admin 的資料（應該 403）
+DELETE http://localhost:3000/api/signup/{{6945447bac9129d95d8c31a7}}
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDU0NDhiYWM5MTI5ZDk1ZDhjMzFhOSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzY2MTQ3Mjk5fQ.IeSbf8ez6Et80a8Em7IUaDfAYD-gS2QSSv-1CsPLGSM"}}
+
+###  admin 刪 student 的資料（成功）
+DELETE http://localhost:3000/api/signup/{{6945448bac9129d95d8c31a9}}
+Authorization: Bearer {{"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NDU0NDhiYWM5MTI5ZDk1ZDhjMzFhOSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzY2MTQ3Mjk5fQ.IeSbf8ez6Et80a8Em7IUaDfAYD-gS2QSSv-1CsPLGSM"}}

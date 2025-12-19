@@ -1,0 +1,22 @@
+{
+    "name": "week12-lab",
+    "type": "module",
+    "scripts": {
+      "dev": "node src/server.js",
+      "test": "vitest"
+    },
+    "dependencies": {
+      "bcrypt": "^5.1.1",
+      "dotenv": "^16.4.5",
+      "express": "^4.19.2",
+      "jsonwebtoken": "^9.0.2",
+      "mongoose": "^8.3.4"
+    },
+    "devDependencies": {
+      "supertest": "^6.3.4",
+      "vitest": "^1.5.0",
+      "mongodb-memory-server": "^9.5.0"
+    }
+  }
+  
+  

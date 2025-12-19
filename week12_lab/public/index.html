@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab Auth Frontend</title>
+</head>
+<body>
+  <h2>登入</h2>
+  <input id="username" placeholder="username">
+  <input id="password" type="password" placeholder="password">
+  <button onclick="login()">Login</button>
+
+  <hr>
+
+  <div id="userArea" style="display:none;">
+    <p id="currentUser"></p>
+
+    <h3>新增資料</h3>
+    <input id="dataName" placeholder="name">
+    <button onclick="addData()">送出</button>
+
+    <h3>資料列表</h3>
+    <ul id="list"></ul>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
